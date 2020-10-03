@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Authentication
+SECURE
+
+My Claims
+
+@foreach (var claim in User.Claims)
+{
+    <dt>@claim.Type</dt>
+    <dd>@claim.Value</dd>
+}
+
+@foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
+{
+    <dt>@prop.Key</dt>
+    <dd>@prop.Value</dd>
+}
+
+@foreach (var prop in (await Context.AuthenticateAsync()).Principal.Identities)
+{
+    <dt>@prop.Name</dt>
+}
